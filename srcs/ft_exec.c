@@ -44,7 +44,7 @@ static char	*ft_check_path(char **paths, char *cmd)
 		i++;
 	}
 	free(paths);
-	return (NULL);
+	return (cmd);
 }
 
 char	*ft_get_path(char *cmd, char **envp)

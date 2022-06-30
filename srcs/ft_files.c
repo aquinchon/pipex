@@ -57,12 +57,13 @@ int	ft_heredoc(int argc, char *arg)
 	line = get_next_line(0);
 	while (!line || (line && ft_strncmp(line, lim, ft_strlen(lim))))
 	{
-		if (!line)
-			write(1, "\n", 1);
-		else
+		if (line)
+		{
 			write(fdin, line, ft_strlen(line));
+			if (line[ft_strlen(line) - 1] == '\n')
+				ft_write_heredoc(argc);
+		}
 		free(line);
-		ft_write_heredoc(argc);
 		line = get_next_line(0);
 	}
 	free(line);

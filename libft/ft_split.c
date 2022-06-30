@@ -34,7 +34,7 @@ static int	ft_process_word(int *i, char *str, char c)
 		while (!(str[*i + j] == c || str[*i + j] == '\0'))
 			j++;
 	}
-	return (j);		
+	return (j);
 }
 
 static int	ft_process_split(char **split, char *str, char c, int wrds_cnt)
