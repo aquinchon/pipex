@@ -23,10 +23,10 @@ LIBFT_PATH = libft/
 LIBINC_PATH = libft/includes/
 
 SRCS_PATH		= srcs/
-SRCS_FUNCTIONS	= pipex ft_errors ft_exec ft_files
+SRCS_FUNCTIONS	= pipex ft_errors ft_exec ft_files ft_fork
 SRCS = $(addprefix $(SRCS_PATH), $(addsuffix .c, $(SRCS_FUNCTIONS)))
 SRCS_B_PATH			= srcs/
-SRCS_B_FUNCTIONS	= pipex_bonus ft_errors ft_exec ft_files
+SRCS_B_FUNCTIONS	= pipex_bonus ft_errors ft_exec ft_files ft_fork
 SRCS_B = $(addprefix $(SRCS_B_PATH), $(addsuffix .c, $(SRCS_B_FUNCTIONS)))
 
 OBJS = $(SRCS:.c=.o)

@@ -29,7 +29,7 @@ static char	*ft_check_path(char **paths, char *cmd)
 	char	*path;	
 
 	i = 0;
-	while (paths[i])
+	while (paths[i] && paths[i][0])
 	{
 		tmp = ft_strjoin(paths[i], "/");
 		free(paths[i]);
@@ -55,7 +55,7 @@ char	*ft_get_path(char *cmd, char **envp)
 	while (*envp && ft_strncmp("PATH=", *envp, 5))
 		envp += 1;
 	if (!(envp))
-		return (NULL);
+		return (cmd);
 	paths = ft_split(*envp + 5, ':');
 	path = ft_check_path(paths, cmd);
 	if (!path)
@@ -72,11 +72,11 @@ void	ft_exec(char *arg, char **envp)
 		ft_errors("Permission denied: \n", 4);
 	cmd = ft_split(arg, ' ');
 	cmd_path = ft_get_path(cmd[0], envp);
-	if (execve(cmd_path, cmd, envp) == -1)
+	if (execve(cmd_path, cmd, envp))
 	{
-		free(cmd);
-		free(cmd_path);
-		ft_errors(cmd[0], 0);
+		if (cmd[0] != cmd_path)
+			free(cmd_path);
+		ft_errors(cmd[0], 3);
 		exit (1);
 	}
 }

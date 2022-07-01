@@ -16,9 +16,10 @@ static int	ft_errors_2(char *msg, int n_error)
 {
 	if (n_error == 3)
 	{
-		write(2, "Exec error: ", 12);
+		write(2, "Pipex: Command not found: ", 26);
 		write(2, msg, ft_strlen(msg));
 		write(2, "\n", 1);
+		free(msg);
 		exit (1);
 	}
 	else if (n_error == 4)

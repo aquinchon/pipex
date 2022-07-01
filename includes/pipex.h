@@ -32,5 +32,6 @@ void	ft_exec(char *arg, char **envp);
 /* ouverture et gesion des fichiers ft_files.c */
 int		ft_open_file(char *arg, int mode);
 int		ft_heredoc(int argc, char *arg);
+void	ft_fork(int argc, char **argv, char **envp, int fdout);
 
 #endif
