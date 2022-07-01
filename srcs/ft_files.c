@@ -30,8 +30,13 @@ int	ft_open_file(char *arg, int mode)
 		fd = open(arg, O_CREAT | O_TRUNC | O_RDWR, 00644);
 	else
 		fd = open(arg, O_WRONLY | O_CREAT | O_APPEND, 00644);
-	if (fd < 0)
+	if (fd < 0 && mode >= 1)
 		ft_errors(arg, 5);
+	else if (fd < 0 && !mode)
+	{
+		ft_errors(arg, 0);
+		fd = 3;
+	}
 	return (fd);
 }
 
