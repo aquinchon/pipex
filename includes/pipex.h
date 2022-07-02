@@ -28,10 +28,10 @@ int		ft_errors(char *msg, int n_error);
 /* Utilitaires pour les cmd ft_cmd_utils */
 char	*ft_get_path(char *cmd, char **envp);
 void	ft_free_path(char **paths, int i);
-void	ft_exec(char *arg, char **envp);
+int		ft_exec(char *arg, char **envp);
 /* ouverture et gesion des fichiers ft_files.c */
 int		ft_open_file(char *arg, int mode);
 int		ft_heredoc(int argc, char *arg);
-void	ft_fork(int argc, char **argv, char **envp, int fdout);
+int		ft_fork(int argc, char **argv, char **envp, int fdout);
 
 #endif

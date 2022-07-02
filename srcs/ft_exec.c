@@ -63,10 +63,11 @@ char	*ft_get_path(char *cmd, char **envp)
 	return (path);
 }
 
-void	ft_exec(char *arg, char **envp)
+int	ft_exec(char *arg, char **envp)
 {
 	char	**cmd;
 	char	*cmd_path;
+	char	*err_msg;
 
 	if (!(arg && arg[0]))
 		ft_errors("Permission denied: \n", 4);
@@ -76,7 +77,10 @@ void	ft_exec(char *arg, char **envp)
 	{
 		if (cmd[0] != cmd_path)
 			free(cmd_path);
-		ft_errors(cmd[0], 3);
+		err_msg = ft_strdup(cmd[0]);
+		ft_free_path(cmd, 0);
+		return (ft_errors(err_msg, 3));
 		exit (1);
 	}
+	return (0);
 }

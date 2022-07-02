@@ -29,7 +29,7 @@ static void	ft_process_pipe(int fdout, int pipe_fd[2], int pid, int pipe_out)
 	}
 }
 
-void	ft_fork(int argc, char **argv, char **envp, int fdout)
+int	ft_fork(int argc, char **argv, char **envp, int fdout)
 {
 	pid_t	pid;
 	int		pipe_fd[2];
@@ -49,6 +49,8 @@ void	ft_fork(int argc, char **argv, char **envp, int fdout)
 		{
 			ft_process_pipe(fdout, pipe_fd, pid, i < argc - 2);
 			ft_exec(argv[i], envp);
+			close(pipe_fd[1]);
+			return (errno);
 		}
 		else
 			ft_process_pipe(fdout, pipe_fd, pid, 0);
@@ -56,4 +58,5 @@ void	ft_fork(int argc, char **argv, char **envp, int fdout)
 		close(pipe_fd[1]);
 	}
 	waitpid(-1, NULL, 0);
+	return (0);
 }

@@ -34,7 +34,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_fork(argc, argv, envp, fdout);
 	close(fdin);
 	if (!access("/tmp/heredoc_tmp", F_OK))
-		unlink(".heredoc_tmp");
+		unlink("/tmp/heredoc_tmp");
 	close(fdout);
 	return (0);
 }
