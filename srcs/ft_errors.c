@@ -20,7 +20,6 @@ static int	ft_errors_2(char *msg, int n_error)
 		write(2, msg, ft_strlen(msg));
 		write(2, "\n", 1);
 		free(msg);
-		//exit (1);
 		return (errno);
 	}
 	else if (n_error == 4)

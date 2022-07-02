@@ -29,15 +29,23 @@ static void	ft_process_pipe(int fdout, int pipe_fd[2], int pid, int pipe_out)
 	}
 }
 
+static int	ft_start_arg(char **argv)
+{
+	int	res;
+
+	res = 1;
+	if (!ft_strncmp(argv[1], "here_doc\0", 9))
+		res = 2;
+	return (res);
+}
+
 int	ft_fork(int argc, char **argv, char **envp, int fdout)
 {
 	pid_t	pid;
 	int		pipe_fd[2];
 	int		i;
 
-	i = 1;
-	if (!ft_strncmp(argv[1], "here_doc\0", 9))
-		i = 2;
+	i = ft_start_arg(argv);
 	while (++i < argc - 1)
 	{
 		if (pipe(pipe_fd) == -1)
@@ -57,6 +65,5 @@ int	ft_fork(int argc, char **argv, char **envp, int fdout)
 		close(pipe_fd[0]);
 		close(pipe_fd[1]);
 	}
-	waitpid(-1, NULL, 0);
-	return (0);
+	return (waitpid(-1, NULL, 0));
 }
