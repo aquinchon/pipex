@@ -52,6 +52,8 @@ char	*ft_get_path(char *cmd, char **envp)
 	char	**paths;
 	char	*path;
 
+	if (!(*envp))
+		return (cmd);
 	while (*envp && ft_strncmp("PATH=", *envp, 5))
 		envp += 1;
 	if (!(envp))
@@ -70,7 +72,7 @@ int	ft_exec(char *arg, char **envp)
 	char	*err_msg;
 
 	if (!(arg && arg[0]))
-		ft_errors("Permission denied: \n", 4);
+		exit(1);
 	cmd = ft_split(arg, ' ');
 	cmd_path = ft_get_path(cmd[0], envp);
 	if (execve(cmd_path, cmd, envp))

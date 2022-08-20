@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **envp)
 	int		fdout;
 
 	if (argc != 5)
-		ft_errors("Invalid number of argumets.", 1);
+		ft_errors("Invalid number of arguments.", 1);
 	fdin = ft_open_file(argv[1], 0);
 	fdout = ft_open_file(argv[4], 1);
 	dup2(fdin, 0);
