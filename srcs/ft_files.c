@@ -60,7 +60,8 @@ int	ft_heredoc(int argc, char *arg)
 	fdin = open("/tmp/heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 00644);
 	ft_write_heredoc(argc);
 	line = get_next_line(0);
-	while (!line || (line && ft_strncmp(line, lim, ft_strlen(lim))))
+	//while (!line || (line && ft_strncmp(line, lim, ft_strlen(lim))))
+	while ((line && ft_strncmp(line, lim, ft_strlen(lim))))
 	{
 		if (line)
 		{

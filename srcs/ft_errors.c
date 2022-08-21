@@ -16,8 +16,9 @@ static int	ft_errors_2(char *msg, int n_error)
 {
 	if (n_error == 3)
 	{
-		write(2, "Pipex: Command not found: ", 27);
+		write(2, "pipex: ", 7);
 		write(2, msg, ft_strlen(msg));
+		write(2, ": command not found", 19);
 		write(2, "\n", 1);
 		free(msg);
 		return (errno);

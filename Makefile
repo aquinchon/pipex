@@ -42,7 +42,7 @@ $(NAME): $(OBJS)
 
 $(NAME_B): $(OBJS_B)
 	@make all -C $(LIBFT_PATH)
-	$(CC) -o $(NAME) $(OBJS_B) -L $(LIBFT_PATH) -lft
+	$(CC) -o $(NAME_B) $(OBJS_B) -L $(LIBFT_PATH) -lft
 	@echo "\033[33;32m=== Compilation pipex bonus \t\t\tDONE\e[0m"
 
 all: $(NAME)
